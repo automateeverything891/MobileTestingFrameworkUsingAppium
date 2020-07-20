@@ -7,7 +7,9 @@
         <methods>
           <include name="tC_002_Validate_NearBy_Homes_page"/>
           <include name="closeApp"/>
+          <include name="afterMethod"/>
           <include name="lunchingApp"/>
+          <include name="beforeMethod"/>
         </methods>
       </class> <!-- com.testcases.TC_002_Validate_NearBy_Homes_page -->
     </classes>

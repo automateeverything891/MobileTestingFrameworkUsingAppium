@@ -2,24 +2,50 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="189558" started-at="2020-07-17T11:47:16Z" finished-at="2020-07-17T11:50:25Z">
+  <suite name="Default suite" duration-ms="161725" started-at="2020-07-20T12:02:46Z" finished-at="2020-07-20T12:05:28Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="189558" started-at="2020-07-17T11:47:16Z" finished-at="2020-07-17T11:50:25Z">
-      <class name="com.testcases.TC_002_Validate_NearBy_Homes_page">
-        <test-method status="PASS" signature="lunchingApp()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="lunchingApp" is-config="true" duration-ms="47453" started-at="2020-07-17T17:17:16Z" finished-at="2020-07-17T17:18:03Z">
+    <test name="Default test" duration-ms="161725" started-at="2020-07-20T12:02:46Z" finished-at="2020-07-20T12:05:28Z">
+      <class name="com.testcases.TC_001_Validate_Search_Listing_page">
+        <test-method status="PASS" signature="lunchingApp()[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="lunchingApp" is-config="true" duration-ms="43900" started-at="2020-07-20T17:32:46Z" finished-at="2020-07-20T17:33:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lunchingApp -->
-        <test-method status="PASS" signature="tC_002_Validate_NearBy_Homes_page()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="tC_002_Validate_NearBy_Homes_page" duration-ms="135393" started-at="2020-07-17T17:18:03Z" finished-at="2020-07-17T17:20:19Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="beforeMethod" is-config="true" duration-ms="8" started-at="2020-07-20T17:33:30Z" finished-at="2020-07-20T17:33:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.testcases.TC_001_Validate_Search_Listing_page.tC_001_Validate_Search_Listing_page() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tC_002_Validate_NearBy_Homes_page -->
-        <test-method status="PASS" signature="closeApp()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="closeApp" is-config="true" duration-ms="6668" started-at="2020-07-17T17:20:19Z" finished-at="2020-07-17T17:20:25Z">
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="tC_001_Validate_Search_Listing_page()[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="tC_001_Validate_Search_Listing_page" duration-ms="101447" started-at="2020-07-20T17:33:30Z" finished-at="2020-07-20T17:35:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tC_001_Validate_Search_Listing_page -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="afterMethod" is-config="true" duration-ms="765" started-at="2020-07-20T17:35:12Z" finished-at="2020-07-20T17:35:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=tC_001_Validate_Search_Listing_page status=SUCCESS method=TC_001_Validate_Search_Listing_page.tC_001_Validate_Search_Listing_page()[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="closeApp()[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="closeApp" is-config="true" duration-ms="6776" started-at="2020-07-20T17:35:13Z" finished-at="2020-07-20T17:35:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeApp -->
-      </class> <!-- com.testcases.TC_002_Validate_NearBy_Homes_page -->
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.testcases.TC_001_Validate_Search_Listing_page@618425b5]" name="endReport" is-config="true" duration-ms="8768" started-at="2020-07-20T17:35:19Z" finished-at="2020-07-20T17:35:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
+      </class> <!-- com.testcases.TC_001_Validate_Search_Listing_page -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

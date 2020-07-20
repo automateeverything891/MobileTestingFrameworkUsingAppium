@@ -4,25 +4,40 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
+import com.mail.SendMail;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import com.utils.Xls_Reader;
 
 import io.appium.java_client.AppiumDriver;
@@ -46,7 +61,27 @@ public class TestBase {
 			System.getProperty("user.dir") + "\\src\\main\\java\\com\\testdata\\TestSuite1.xlsx");
 	public static Logger logger = Logger.getLogger(TestBase.class);
 	
+	public static ExtentReports report;
+
+	public static ExtentTest extentTest;
 	
+	static {
+
+
+		report = new ExtentReports(System.getProperty("user.dir") + "\\src\\main\\java\\com\\report\\extentreport.html",true);
+
+		PropertyConfigurator.configure("log4j.properties");
+
+		try {
+			report.addSystemInfo("Host Name", InetAddress.getLocalHost().getHostName())
+					.addSystemInfo("USER NAME", "TESTING TEAM").addSystemInfo("PROJECT NAME", "BOOKING.COM");
+
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	@BeforeClass
 	public void lunchingApp() throws IOException {
 		//to_Be_Start_Android_Device();
@@ -78,7 +113,11 @@ public class TestBase {
 	}
 
 	
+	@BeforeMethod
+	public void beforeMethod(Method result) {
 
+		extentTest = report.startTest(result.getName());
+	}
 	private void appiumStarter() {
 		
 		TestBase tb = new TestBase();
@@ -99,6 +138,69 @@ public class TestBase {
 		//System.out.println("Appium Service Address : - " + appiumServiceUrl);
 		
 	}
+	
+	@AfterMethod
+	public void afterMethod(ITestResult result) {
+
+		getStatus(result);
+
+		report.endTest(extentTest);
+		report.flush();
+	}
+	
+	@AfterClass
+	public void endReport() {
+		
+		SendMail.custom_Mail();
+	}
+	public void printout(String value) {
+
+		logger.info(value);
+		extentTest.log(LogStatus.INFO, value);
+	}
+	
+	private void getStatus(ITestResult result) {
+
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			
+			xls.setCellDataInparticularCell(result.getMethod().getMethodName(), "Test Data", "Status", "PASS");
+			
+		} else if (result.getStatus() == ITestResult.FAILURE) {
+			
+			xls.setCellDataInparticularCell(result.getMethod().getMethodName(), "Test Data", "Status", "FAIL");
+			extentTest.log(LogStatus.ERROR, result.getName() + "test is failed " + result.getThrowable());
+			extentTest.log(LogStatus.FAIL,
+					result.getName() + "test is failed " + extentTest.addScreenCapture(catureScreen()));
+			
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			
+			xls.setCellDataInparticularCell(result.getMethod().getMethodName(), "Test Data", "Status", "SKIP");
+			extentTest.log(LogStatus.SKIP, result.getName() + "test is skip " + result.getThrowable());
+
+		} else if (result.getStatus() == ITestResult.STARTED) {
+			extentTest.log(LogStatus.INFO, result.getName() + " Test is Started");
+		}
+	}
+	
+	public String catureScreen() {
+
+		File destFile = null;
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat simpleformat = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+		try {
+			destFile = new File(System.getProperty("user.dir") + "\\src\\main\\java\\com\\report\\"
+					+ simpleformat.format(calendar.getTime()) + ".png");
+			FileUtils.copyFile(scrFile, destFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return destFile.getAbsolutePath();
+	}
+	
+	
 	public boolean checkIfServerIsRunnning(int port) {
 
 		boolean isServerRunning = false;

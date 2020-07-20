@@ -107,6 +107,7 @@ public class Keywords extends TestBase {
 
 	public String select_date(String object,String date) throws InterruptedException {
 		
+		printout("SELECT THE GIVEN DATES TO THE DATE PICKER OBJECT !!!!!!!!!!!!!!");
 		 boolean bul = true;
 		
 		 while(bul!=false) {      
@@ -126,6 +127,8 @@ public class Keywords extends TestBase {
 
 	}
 	private String selectDropdown(String objectkeys, String datakeys) {
+		
+		printout("SELECT THE GIVEN OPTIION TO THE DROP DOWN !!!!!!!!!!!!!!!!!!");
 		Select dropdown = new Select(getWebElement(objectkeys));
 		dropdown.selectByValue(datakeys);
 		return "Pass";
@@ -133,6 +136,7 @@ public class Keywords extends TestBase {
 
 	private String searchAndSelect(String objectkeys, String datakeys) {
 		
+		printout("SEARCH AND SELECT THE GIVEN OBJECT !!!!!!!!!!!!!!!!!!!!!");
 		String searchbox = objectkeys.split("\\|")[0];
 		String suggestionlist = objectkeys.split("\\|")[1];
 		
@@ -148,27 +152,33 @@ public class Keywords extends TestBase {
 	}
 
 	private String verifyText(String objectkeys, String string) {
+		printout("VERIFING THE STRING ON GIVEN OBJECT !!!!!!!!!!!!!!!!");
 		Assert.assertEquals(getWebElement(objectkeys).getText(), string);
 		return "Pass";
 	}
 
 	private String enter(String objectkeys, String string) {
+		
+		printout("ENTERING THE STRING ON GIVEN OBJECT !!!!!!!!!!!!!!!!");
 		getWebElement(objectkeys).sendKeys(string);
 		return "Pass";
 	}
 
 	private String click(String objectkeys) {
 		
+		printout("CLICKING THE GIVEN OBJECT !!!!!!!!!!");
 		getWebElement(objectkeys).click();
 		return "Pass";
 	}
 	private String goback() {
+		printout("NAVIGATING BACK ON THE DEVICE !!!!!!!!!!!!");
 		driver.navigate().back();
 		return "Pass";
 	}
 
 	private String checkAndClick(String objectkeys) {
 		 
+		printout("CHECK AND CLICK ON THE GIVEN OBJECT !!!!!!!!!!!!");
 		if(getWebElements(objectkeys.split("\\|")[1]).size()==0)
 			getWebElement(objectkeys.split("\\|")[0]).click();
 		return "Pass";
@@ -176,6 +186,7 @@ public class Keywords extends TestBase {
 
 	private String verifyElement(String objectkeys) {
 		
+		printout("VERIFING THE ELEMENT OF THE GIVEN OBJECT !!!!!!!!!!!!");
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOf(getWebElement(objectkeys)));
 		return "Pass";
@@ -183,6 +194,7 @@ public class Keywords extends TestBase {
 
 	public String scroll_Down(String object) throws InterruptedException {
 		
+		printout("UNTIL FOUND THE GIVEN OBJECT KEEP SCROLL DOWN !!!!!!!!!!!!!!!");
 		 boolean bul = true;
 		
 		 while(bul!=false) {     
