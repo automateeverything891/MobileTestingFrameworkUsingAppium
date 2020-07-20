@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="189558" started-at="2020-07-17T11:47:16Z" finished-at="2020-07-17T11:50:25Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="189558" started-at="2020-07-17T11:47:16Z" finished-at="2020-07-17T11:50:25Z">
+      <class name="com.testcases.TC_002_Validate_NearBy_Homes_page">
+        <test-method status="PASS" signature="lunchingApp()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="lunchingApp" is-config="true" duration-ms="47453" started-at="2020-07-17T17:17:16Z" finished-at="2020-07-17T17:18:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- lunchingApp -->
+        <test-method status="PASS" signature="tC_002_Validate_NearBy_Homes_page()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="tC_002_Validate_NearBy_Homes_page" duration-ms="135393" started-at="2020-07-17T17:18:03Z" finished-at="2020-07-17T17:20:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tC_002_Validate_NearBy_Homes_page -->
+        <test-method status="PASS" signature="closeApp()[pri:0, instance:com.testcases.TC_002_Validate_NearBy_Homes_page@1dac5ef]" name="closeApp" is-config="true" duration-ms="6668" started-at="2020-07-17T17:20:19Z" finished-at="2020-07-17T17:20:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeApp -->
+      </class> <!-- com.testcases.TC_002_Validate_NearBy_Homes_page -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
